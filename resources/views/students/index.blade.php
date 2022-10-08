@@ -1,7 +1,7 @@
 @include('partials.header')
 <?php $array = array('title'=> 'Student System') ;?>
 <x-nav :data="$array"/>
-<x-messages />
+
 
 
 <header class="max-w-lg mx-auto mt-5">
