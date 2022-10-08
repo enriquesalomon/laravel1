@@ -32,8 +32,10 @@ public function process(Request $request){
   if(auth()->attempt($validated)){
       $request->session()->regenerate();
 
-      return redirect('/')->with('message', 'welcome back')
+      return redirect('/')->with('message', 'welcome back');
   }
+
+  return back()->withErrors(['email' => 'Login failed'])->onlyInput('email');
 
 
 
@@ -49,7 +51,7 @@ public function process(Request $request){
    $request->session()->invalidate();
    $request->session()->regenerateToken();
 
-   return redirect('/')->with('message', 'Logout successful');
+   return redirect('/login')->with('message', 'Logout successful');
   }
 
 
@@ -57,7 +59,8 @@ public function process(Request $request){
   $validated = $request ->validate([
       "name" => ['required','min:4'],
       "email" => ['required', 'email', Rule::unique('users','email')],
-      'password' => 'required|confirmed|min:6'
+      'password' => 'required|confirmed|min:6',
+      'password_confirmation' => 'required|confirmed'
   ]);
 
   $validated['password']= bcrypt($validated['password']);
