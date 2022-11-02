@@ -60,7 +60,7 @@ public function process(Request $request){
       "name" => ['required','min:4'],
       "email" => ['required', 'email', Rule::unique('users','email')],
       'password' => 'required|confirmed|min:6',
-      'password_confirmation' => 'required|confirmed'
+       'password_confirmation' => 'required|confirmed'
   ]);
 
   $validated['password']= bcrypt($validated['password']);
