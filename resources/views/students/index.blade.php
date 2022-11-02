@@ -26,6 +26,9 @@
                      <th scope="col" class="py-3 px-6">
                         Age
                      </th>
+                     <th scope="col" class="py-3 px-6">
+                       Action
+                     </th>
                 </tr>
             </thead>
             <tbody>
@@ -43,12 +46,19 @@
                     <td class="py-4 px-6">
                         {{$student->age}} 
                     </td>
+                    <td class="py-4 px-6">
+                      <a href="/student/{{$student->id}} " class="bg-sky-600 text-white px-4 py-1 rounded">view
+                      </a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table> 
+        <div class="mx-auto max-w-lg pt-6 p-4">
+            {{$students->links()}}
+        </div>
 
-        {{$students->links()}}
+      
       
    
     </div>  
