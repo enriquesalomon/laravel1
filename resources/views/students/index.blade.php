@@ -46,7 +46,11 @@
                 </tr>
                 @endforeach
             </tbody>
-        </table>    
+        </table> 
+
+        {{$students->links()}}
+      
+   
     </div>  
 
 </section>
